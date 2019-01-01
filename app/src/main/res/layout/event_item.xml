@@ -105,16 +105,18 @@
 
                     <TextView
                         android:id="@+id/titleEvtTv"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
                         android:layout_weight="80"
-                        android:maxLength="23"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:text="Titre"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/dayEvtTv"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="25"
                         android:text="Date" />
@@ -126,32 +128,20 @@
 
                     <TextView
                         android:id="@+id/detailEvtTv"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="80"
-                        android:maxLength="63"
+                        android:ellipsize="end"
+                        android:maxLines="3"
                         android:text="Détails" />
 
                     <Button
                         android:id="@+id/readEvtBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="35dp"
+                        android:layout_width="15dp"
+                        android:layout_height="50dp"
                         android:layout_weight="10"
                         android:text="Vu" />
 
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="right">
-
-                    <TextView
-                        android:id="@+id/readMoreEvtBtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="30dp"
-                        android:text="Lire plus .." />
                 </TableRow>
 
             </TableLayout>

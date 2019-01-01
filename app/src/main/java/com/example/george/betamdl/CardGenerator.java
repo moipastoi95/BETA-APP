@@ -18,7 +18,10 @@ public class CardGenerator {
         //Simulation d'interation à la base de données
         listEventNow = new ArrayList<>();
         for(int i=1; i<=howMany; i++) {
-            listEventNow.add(new Event(i, "Ce titre n'est en aucun cas une boutade "+i, i+"Voici les détails d'une très longue histoire que je vais, si l'envie m'en prend, vous conter. Je vais juste manger des macarons !", "Club A des évènements actuels", 1));
+            listEventNow.add(new Event(i, "Ce titre n'est en aucun cas une boutade "+i,
+                    i+"Voici les détails d'une très longue histoire que je vais, " +
+                            "si l'envie m'en prend, vous conter. Je vais juste manger des macarons !",
+                    "Club A des évènements actuels", 1));
         }
         return listEventNow;
     }

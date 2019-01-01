@@ -7,11 +7,11 @@
                 android:id="@+id/Actions"
                 android:checkableBehavior="single">
 
-                <item android:id="@+id/edit"
+                <item android:id="@+id/add"
                     android:title="Créer un article"
                     android:icon="@drawable/ic_note_add_black_24dp"/>
 
-                <item android:id="@+id/change"
+                <item android:id="@+id/edit"
                     android:title="Modifier un article"
                     android:icon="@drawable/ic_edit_black_24dp"/>
 
@@ -34,16 +34,7 @@
                 <item android:id="@+id/donnees"
                     android:icon="@drawable/key"
                     android:title="Mes données"/>
-
-
-
             </group>
         </menu>
     </item>
-
-
-
-
-
-
 </menu>

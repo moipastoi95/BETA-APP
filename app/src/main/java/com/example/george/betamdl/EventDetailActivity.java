@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class EventFullActivity extends AppCompatActivity {
+public class EventDetailActivity extends AppCompatActivity {
 
     TextView evtClub;
     TextView evtTitle;

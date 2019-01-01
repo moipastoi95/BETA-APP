@@ -25,7 +25,6 @@
 
             </group>
         </menu>
-
     </item>
 
     <item android:title="Espace administrateur">
@@ -45,10 +44,4 @@
             </group>
         </menu>
     </item>
-
-
-
-
-
-
 </menu>

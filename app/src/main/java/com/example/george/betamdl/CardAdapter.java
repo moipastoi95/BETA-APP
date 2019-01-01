@@ -3,13 +3,13 @@ package com.example.george.betamdl;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -41,6 +41,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
         private TextView mTitle;
         private TextView mDetail;
         private Button evtNowRead;
+        private CardView cardView;
         private Context context;
 
         CardHolder(View itemView) {
@@ -49,24 +50,19 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardHolder> {
             mTitle = (TextView) itemView.findViewById(R.id.titleEvtTv);
             mDetail = (TextView) itemView.findViewById(R.id.detailEvtTv);
             evtNowRead = (Button) itemView.findViewById(R.id.readEvtBtn);
+            cardView = (CardView) itemView.findViewById(R.id.cardViewEvtNow);
+
             context = itemView.getContext();
         }
 
         void Display(final Event event) {
-            if (event.getTitle().length() > 23)
-                mTitle.setText(event.getTitle().substring(0, 19)+" ...");
-            else
-                mTitle.setText(event.getTitle());
 
-            if (event.getDetail().length() > 63)
-                mDetail.setText(event.getDetail().substring(0, 61)+" ...");
-            else
-                mDetail.setText(event.getDetail());
-
-            evtNowRead.setOnClickListener(new View.OnClickListener() {
+            mTitle.setText(event.getTitle());
+            mDetail.setText(event.getDetail());
+            cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,EventFullActivity.class);
+                    Intent intent = new Intent(context,EventDetailActivity.class);
                     intent.putExtra("event", event);
                     context.startActivity(intent);
                 }

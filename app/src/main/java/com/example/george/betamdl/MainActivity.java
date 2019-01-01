@@ -7,18 +7,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,14 +31,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     /*--------------------------------------*/
 
     // Variables des CardView et de leur contenu
-        //des évènements actuels
-    private RecyclerView nowEvtRv;
+    private RecyclerView EvtRv;
     private List<Event> nowEvt;
-    private CardAdapter nowCardAdapter;
-        //des évènements futures
-    private RecyclerView futureEvtRv;
     private List<Event> futureEvt;
-    private CardAdapter futureCardAdapter;
+    private List<Event> allEvtList;
+    private CardAdapter CardAdapter;
 
 
     @Override
@@ -68,32 +62,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
         /*populateCards();*/
 
+        //https://gist.github.com/gabrielemariotti/4c189fb1124df4556058#file-simpleadapter-java
         // Pour les évènements actuels
+        int howManyNowEvt = 5;
+        int howManyFutureEvt = 5;
+            //Repérage du RecyclerView
+        EvtRv = (RecyclerView) findViewById(R.id.EvtRv);
+
+            // Génération grace à CardGenerator de :
         CardGenerator cardGenerator = new CardGenerator();
+                //5 évènements actuels et futurs
+        allEvtList = new ArrayList<>();
+        allEvtList.addAll(cardGenerator.nowEvents(howManyNowEvt));
+        allEvtList.addAll(cardGenerator.futureEvents(howManyFutureEvt));
+        // Création CardAdapter
+        CardAdapter = new CardAdapter(allEvtList);
+        EvtRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        nowEvtRv = (RecyclerView) findViewById(R.id.nowEvtRv);
-        nowCardAdapter = new CardAdapter(cardGenerator.nowEvents(5));
-        nowEvtRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        nowEvtRv.setAdapter(nowCardAdapter);
+        // Création de la section de la list
+        List<SimpleSectionedRecyclerViewAdapter.Section> sections =
+                new ArrayList<SimpleSectionedRecyclerViewAdapter.Section>();
 
-        // pour les évènements futures
-        futureEvtRv = (RecyclerView) findViewById(R.id.futureEvtRv);
-        futureCardAdapter = new CardAdapter(new CardGenerator().futureEvents(5));
-        futureEvtRv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        futureEvtRv.setAdapter(futureCardAdapter);
+        //Configurer les sections
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(0,"Evenements Actuels"));
+        sections.add(new SimpleSectionedRecyclerViewAdapter.Section(howManyNowEvt,"Evenements futurs"));
 
+        //ajouter l'adapter à sectionAdapter
+        SimpleSectionedRecyclerViewAdapter.Section[] dummy = new SimpleSectionedRecyclerViewAdapter.Section[sections.size()];
+        SimpleSectionedRecyclerViewAdapter mSectionedAdapter = new
+                SimpleSectionedRecyclerViewAdapter(this,R.layout.section,R.id.section_text,CardAdapter);
+        mSectionedAdapter.setSections(sections.toArray(dummy));
 
-        // TESTS
+        EvtRv.setAdapter(mSectionedAdapter);
 
-        /*Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(0);
-        calendar.set(1989, 7, 14, 12, 45, 0);
-        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
-        String dateDF = dateFormat.format(dateFormat);
-        Toast.makeText(this, dateDF, Toast.LENGTH_LONG);*/
     }
 
     @Override
