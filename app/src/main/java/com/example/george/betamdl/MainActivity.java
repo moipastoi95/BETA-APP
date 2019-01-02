@@ -97,6 +97,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         EvtRv.setAdapter(mSectionedAdapter);
 
+
+
+        // TEST pour les dates
+
     }
 
     @Override

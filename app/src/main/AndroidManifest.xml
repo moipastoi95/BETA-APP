@@ -24,8 +24,9 @@
         <activity android:name=".Infos" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ClubActivity" />
-        <activity android:name=".AdminActivity"/>
-        <activity android:name=".EventDetailActivity"/>
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".EventDetailActivity" />
+        <activity android:name=".AddEventActivity"></activity>
     </application>
 
 </manifest>
