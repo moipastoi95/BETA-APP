@@ -7,10 +7,23 @@ public class Event implements Parcelable {
     private int idEvent;
     private String title;
     private String detail;
+
     private String nameClubLinked;
     private int idClubLinked;
+
+    private int dayOfMonthEventIs;
+    private int monthEventIs;
+    private int yearEventIs;
+    private int hourEventIs;
+    private int minuteEventIs;
+
+    private int dayOfMonthCreation;
+    private int monthCreation;
+    private int yearCreation;
     //private Date dateOfEvent;
     //Dates ...
+
+    public Event(){}
 
     public Event(int idEvent, String title, String detail, String nameClubLinked, int idClubLinked) {
         this.idEvent = idEvent;
@@ -40,6 +53,7 @@ public class Event implements Parcelable {
         }
     };
 
+    //Getter
     public String getTitle() {
         return title;
     }
@@ -58,6 +72,83 @@ public class Event implements Parcelable {
 
     public int getIdClubLinked() {
         return idClubLinked;
+    }
+
+    public int getDayOfMonthEventIs() {
+        return dayOfMonthEventIs;
+    }
+
+    public int getMonthEventIs() {
+        return monthEventIs;
+    }
+
+    public int getYearEventIs() {
+        return yearEventIs;
+    }
+
+    public int getHourEventIs() {
+        return hourEventIs;
+    }
+
+    public int getMinuteEventIs() {
+        return minuteEventIs;
+    }
+
+    public int getDayOfMonthCreation() {
+        return dayOfMonthCreation;
+    }
+
+    public int getMonthCreation() {
+        return monthCreation;
+    }
+
+    public int getYearCreation() {
+        return yearCreation;
+    }
+
+    // Setter
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public void setIdClubLinked(int idClubLinked) {
+        this.idClubLinked = idClubLinked;
+    }
+
+    public void setDayOfMonthEventIs(int dayOfMonthEventIs) {
+        this.dayOfMonthEventIs = dayOfMonthEventIs;
+    }
+
+    public void setMonthEventIs(int monthEventIs) {
+        this.monthEventIs = monthEventIs;
+    }
+
+    public void setYearEventIs(int yearEventIs) {
+        this.yearEventIs = yearEventIs;
+    }
+
+    public void setHourEventIs(int hourEventIs) {
+        this.hourEventIs = hourEventIs;
+    }
+
+    public void setMinuteEventIs(int minuteEventIs) {
+        this.minuteEventIs = minuteEventIs;
+    }
+
+    public void setDayOfMonthCreation(int dayOfMonthCreation) {
+        this.dayOfMonthCreation = dayOfMonthCreation;
+    }
+
+    public void setMonthCreation(int monthCreation) {
+        this.monthCreation = monthCreation;
+    }
+
+    public void setYearCreation(int yearCreation) {
+        this.yearCreation = yearCreation;
     }
 
     @Override
