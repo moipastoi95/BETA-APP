@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     /*--------------------------------------*/
     /*Variables pour la base de données*/
+    String DB_URL = "jdbc:mysql://sql2.freemysqlhosting.net:3306/sql2278287";
+    String USER = "sql2278287";
+    String PASS = "nT8%zK6%";
     /*DatabaseHelper mDatabaseHelper;*/
     private static final String TAG = "ListDataActivity";
     private ListView mListView;
@@ -45,9 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setTitle("Bienvenue");
 
-
+        // Menu hamburger
         Toast.makeText(MainActivity.this, "Bienvenue ! ",Toast.LENGTH_LONG).show();
-
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
@@ -96,13 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mSectionedAdapter.setSections(sections.toArray(dummy));
 
         EvtRv.setAdapter(mSectionedAdapter);
-
-
-
-        // TEST pour les dates
-
     }
 
+    // Pour le menu hamberger
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -131,11 +129,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-
     }
 
     private void populateCards(){
+    }
 
+    public String getDB_URL() {
+        return DB_URL;
+    }
 
+    public String getUSER() {
+        return USER;
+    }
+
+    public String getPASS() {
+        return PASS;
     }
 }
